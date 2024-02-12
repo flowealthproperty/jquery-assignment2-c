@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click Event Timer</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    var startTime, endTime;
+
+    // Click event handler for the paragraph
+    $('p').click(function() {
+        // Check if this is the first click
+        if (!startTime) {
+            startTime = new Date(); // Record the start time
+            $('#timer').text("Click the paragraph again to stop the timer.");
+        } else {
+            // Record the end time
+            endTime = new Date();
+            // Calculate the time difference in milliseconds
+            var timeDiff = endTime - startTime;
+            $('#timer').text("Milliseconds between clicks: " + timeDiff);
+            // Reset start time for next click
+            startTime = null;
+        }
+    });
+});
+</script>
+</head>
+<body >
+ <div style="display: flex; flex-direction: column; justify-content: center; border: 1px solid #000; align-items: center;width: 600px;">
+    <!-- Paragraph element to click on -->
+   <p style="cursor: pointer;color: red;">Click Me</p>
+ 
+   <!-- Element to display the time difference -->
+   <div id="timer" style="width: 600px;border: 1px solid #000; padding: 30px;width: 500px;color: green;"></div>
+ </div>
+</body>
+</html>
